@@ -67,6 +67,16 @@ void loop() {
             Serial.println("Failed to retrieve CYCLE_STATUS data");
             Serial.println("Reason: " + firebaseData.errorReason());
         }
+         if (Firebase.getString(firebaseData, "/SLOT_ID")) {
+            if (firebaseData.dataType() == "string") {
+                String SLOT_ID = firebaseData.stringData();
+                Serial.print("Received SLOT_ID: ");
+                Serial.println(SLOT_ID);
+            }
+        } else {
+            Serial.println("Failed to retrieve STAND_STATUS data");
+            Serial.println("Reason: " + firebaseData.errorReason());
+        }
                 
         if (Firebase.getString(firebaseData, "/STAND_ID")) {
             if (firebaseData.dataType() == "string") {
